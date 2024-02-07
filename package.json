@@ -1,13 +1,9 @@
 {
-  "name": "dockertesting",
+  "name": "test-playwright-screenshot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git@github.com-personal:Amritsharma2897/dockerTesting.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
