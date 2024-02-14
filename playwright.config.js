@@ -31,6 +31,7 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: "on",
     video: "on",
+    snapshotPath: process.env.SCREENSHOT_PATH || './test-results/snapshots/'
   },
 
   /* Configure projects for major browsers */
