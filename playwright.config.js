@@ -31,8 +31,8 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: "on",
     video: "on",
-    // snapshotPath: './t/snapshots',
-    snapshotPath: path.resolve('./t/snapshots')
+    snapshotPath: './t/example.spec.js-snapshots',
+    // snapshotPath: path.resolve('./t/snapshots')
   },
 
   /* Configure projects for major browsers */

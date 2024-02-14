@@ -53,13 +53,13 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
       env:
-        SCREENSHOT_PATH: ./t/snapshots/
+        SCREENSHOT_PATH: ./t/example.spec.js-snapshots/
 
     - name: Run Playwright tests
       run: npx playwright test --update-snapshots
 
     - name: List Snapshot Directory Contents
-      run: ls -al ./t/snapshots
+      run: ls -al ./t/example.spec.js-snapshots
 
     - uses: actions/upload-artifact@v3
       if: always()
