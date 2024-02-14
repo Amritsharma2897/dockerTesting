@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
       env:
-       SCREENSHOT_PATH: ./test-results/snapshots/ # This path should exist on both local and GitHub runner
+       SCREENSHOT_PATH: ./t/snapshots/ # This path should exist on both local and GitHub runner
     - name: Run Playwright tests
       run: npx playwright test --update-snapshots
     - uses: actions/upload-artifact@v3
