@@ -48,7 +48,7 @@ jobs:
       run: npm ci
 
     - name: Create Snapshots Directory
-      run: mkdir -p ./t/snapshots
+      run: mkdir -p ./t/example.spec.js-snapshots
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
@@ -56,7 +56,7 @@ jobs:
         SCREENSHOT_PATH: ./t/example.spec.js-snapshots/
 
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --update-snapshots
 
     - name: List Snapshot Directory Contents
       run: ls -al ./t/example.spec.js-snapshots
