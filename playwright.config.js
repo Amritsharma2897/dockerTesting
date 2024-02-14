@@ -31,7 +31,7 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: "on",
     video: "on",
-    snapshotPath: getSnapshotPath()
+    snapshotPath: './t/snapshots'
   },
 
   /* Configure projects for major browsers */
@@ -98,11 +98,11 @@ module.exports = defineConfig({
 //   return './t/snapshots/';
 // }
 
-function getSnapshotPath() {
-  if (process.env.GITHUB_ACTIONS && process.env.GITHUB_WORKSPACE) {
-    return path.join(process.env.GITHUB_WORKSPACE, 'test-results', 'snapshots');
-  } else {
-    return path.join(__dirname, 't', 'snapshots');
-  }
-}
+// function getSnapshotPath() {
+//   if (process.env.GITHUB_ACTIONS && process.env.GITHUB_WORKSPACE) {
+//     return path.join(process.env.GITHUB_WORKSPACE, 'test-results', 'snapshots');
+//   } else {
+//     return path.join(__dirname, 't', 'snapshots');
+//   }
+// }
 
