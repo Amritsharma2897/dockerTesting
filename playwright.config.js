@@ -31,7 +31,7 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: "on",
     video: "on",
-    snapshotPath: determineSnapshotPath()
+    snapshotPath: path.join(__filename, 'test-results', 'snapshots')
   },
 
   /* Configure projects for major browsers */
@@ -87,14 +87,14 @@ module.exports = defineConfig({
   // },
 });
 
-function determineSnapshotPath() {
-  const browserName = process.env.PLAYWRIGHT_BROWSER;
-  const platform = process.env.PLAYWRIGHT_PLATFORM;
+// function determineSnapshotPath() {
+//   const browserName = process.env.PLAYWRIGHT_BROWSER;
+//   const platform = process.env.PLAYWRIGHT_PLATFORM;
 
-  if (browserName && platform) {
-    return `./t/snapshots/${browserName}-${platform}.png`;
-  }
+//   if (browserName && platform) {
+//     return `./t/snapshots/${browserName}-${platform}.png`;
+//   }
 
-  return './t/snapshots/';
-}
+//   return './t/snapshots/';
+// }
 
