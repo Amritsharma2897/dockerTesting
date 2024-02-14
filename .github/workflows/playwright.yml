@@ -20,7 +20,7 @@ jobs:
       env:
        SCREENSHOT_PATH: ./t/snapshots/ # This path should exist on both local and GitHub runner
     - name: Run Playwright tests
-      run: npx playwright test --update-snapshots
+      run: npx playwright test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
