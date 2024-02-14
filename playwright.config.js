@@ -31,6 +31,7 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: "on",
     video: "on",
+    /* Set the snapshotPath based on the environment variable or default path */
     snapshotPath: process.env.SCREENSHOT_PATH || './t/snapshots/'
   },
 
@@ -38,12 +39,16 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'] ,
+      snapshotPath: process.env.SCREENSHOT_PATH || './t/snapshots/screenShot-chromium-linux.png'
+    },
     },
 
     {
       name: 'iPad_View_Safari',
-      use: { ...devices['iPad Pro'] },
+      use: { ...devices['iPad Pro'],
+      snapshotPath: process.env.SCREENSHOT_PATH || './t/snapshots/iPad-View-Safari-linux.png'
+     },
     },
 
     // {
@@ -59,7 +64,9 @@ module.exports = defineConfig({
     /* Test against mobile viewports. */
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
+      use: { ...devices['Pixel 5'],
+      snapshotPath: process.env.SCREENSHOT_PATH || './t/snapshots/Mobile-Chrome-linux.png'
+     },
     },
     // {
     //   name: 'Mobile Safari',
