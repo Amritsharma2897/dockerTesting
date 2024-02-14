@@ -31,8 +31,7 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: "on",
     video: "on",
-    /* Set the snapshotPath based on the environment variable or default path */
-    snapshotPath: path.join(__dirname, 'test-results', 'snapshots')
+    snapshotPath: determineSnapshotPath()
   },
 
   /* Configure projects for major browsers */
@@ -78,6 +77,8 @@ module.exports = defineConfig({
     // },
   ],
 
+  
+
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
@@ -85,4 +86,15 @@ module.exports = defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+
+function determineSnapshotPath() {
+  const browserName = process.env.PLAYWRIGHT_BROWSER;
+  const platform = process.env.PLAYWRIGHT_PLATFORM;
+
+  if (browserName && platform) {
+    return `./t/snapshots/${browserName}-${platform}.png`;
+  }
+
+  return './t/snapshots/';
+}
 
