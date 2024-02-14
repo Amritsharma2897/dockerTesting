@@ -56,7 +56,7 @@ jobs:
         SCREENSHOT_PATH: ./t/example.spec.js-snapshots/
 
     - name: Run Playwright tests
-      run: npx playwright test --update-snapshots
+      run: npx playwright test
 
     - name: List Snapshot Directory Contents
       run: ls -al ./t/example.spec.js-snapshots
