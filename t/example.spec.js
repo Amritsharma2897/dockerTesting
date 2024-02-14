@@ -16,7 +16,6 @@ test('get started link', async ({ page }) => {
 
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-  const imageScreenshot = await page.getByRole('heading', { name: 'Installation' }).screenshot({path: './t/snapshots/'});
-  expect(imageScreenshot).toMatchSnapshot()
+  await expect(page.getByRole('heading', { name: 'Installation' })).toHaveScreenshot('get-started-link.png');
 
 });
