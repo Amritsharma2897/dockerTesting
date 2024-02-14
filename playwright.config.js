@@ -1,6 +1,6 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
-
+const path = require('path');
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -32,23 +32,19 @@ module.exports = defineConfig({
     screenshot: "on",
     video: "on",
     /* Set the snapshotPath based on the environment variable or default path */
-    snapshotPath: process.env.SCREENSHOT_PATH || './t/snapshots/'
+    snapshotPath: path.join(__dirname, 'test-results', 'snapshots')
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] ,
-      snapshotPath: process.env.SCREENSHOT_PATH || './t/snapshots/screenShot-chromium-linux.png'
-    },
+      use: { ...devices['Desktop Chrome']},
     },
 
     {
       name: 'iPad_View_Safari',
-      use: { ...devices['iPad Pro'],
-      snapshotPath: process.env.SCREENSHOT_PATH || './t/snapshots/iPad-View-Safari-linux.png'
-     },
+      use: { ...devices['iPad Pro']},
     },
 
     // {
@@ -64,9 +60,7 @@ module.exports = defineConfig({
     /* Test against mobile viewports. */
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'],
-      snapshotPath: process.env.SCREENSHOT_PATH || './t/snapshots/Mobile-Chrome-linux.png'
-     },
+      use: { ...devices['Pixel 5']},
     },
     // {
     //   name: 'Mobile Safari',
