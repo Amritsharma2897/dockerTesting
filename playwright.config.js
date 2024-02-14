@@ -31,7 +31,8 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: "on",
     video: "on",
-    snapshotPath: './t/example.spec.js-snapshots',
+    snapshotPath: `example.spec.js-snapshots/get-started-link-chromium-[process.env.PLATFORM].png`
+    // snapshotPath: './t/example.spec.js-snapshots',
     // snapshotPath: path.resolve('./t/snapshots')
   },
 
