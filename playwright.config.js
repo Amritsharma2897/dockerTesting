@@ -12,6 +12,7 @@ const path = require('path');
  */
 module.exports = defineConfig({
   testDir: './t',
+  snapshotPathTemplate: "t/{arg}.png",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -31,8 +32,6 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     screenshot: "on",
     video: "on",
-    snapshotPath: './t/example.spec.js-snapshots',
-    // snapshotPath: path.resolve('./t/snapshots')
   },
   /* Configure projects for major browsers */
   projects: [
@@ -57,10 +56,10 @@ module.exports = defineConfig({
     // },
 
     /* Test against mobile viewports. */
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5']},
-    },
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 5']},
+    // },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
