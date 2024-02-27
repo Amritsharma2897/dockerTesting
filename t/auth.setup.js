@@ -8,16 +8,33 @@ test('authenticate', async ({ page }) => {
   // Fill in the email address and proceed
   await page.waitForSelector('input[type="email"]');
   await page.fill('input[type="email"]', 'testng46@gmail.com');
-  await page.click('div[id="identifierNext"]');
+  await page.getByRole('button', { name: 'Next' }).click();
 
   // Wait for the password input field and fill in the password
   await page.waitForSelector('input[type="password"]');
   await page.fill('input[type="password"]', 'Test&1234');
-  await page.click('div[id="passwordNext"]');
+  await page.getByRole('button', { name: 'Next' }).click();
+//   const currentURL = await page.url();
+//   expect(currentURL).toContain("inbox");
 
   // Wait for login to complete
   await page.waitForNavigation("load");
 
   // Save authentication state
   await page.context().storageState({ path: 'playwright/.auth/gmail-auth.json' });
+
+
+
+
+//   await page.getByRole('button', { name: 'Next' }).click();
+//   await page.getByLabel('Enter your password').fill('Test&1234');
+//   await page.getByLabel('Enter your password').press('Enter');
+//   await page.goto('https://mail.google.com/mail/u/0/');
+//   await page.goto('https://mail.google.com/mail/u/0/#inbox');
+
+  
+  
+  
+  
+
 });
