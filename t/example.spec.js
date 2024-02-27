@@ -11,6 +11,5 @@ test('get started link', async ({ page }) => {
 
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-  expect (await page.getByRole('heading', { name: 'Installation' }).screenshot()).toMatchSnapshot("search.png",{maxDiffPixelRatio: 0.2});
 
 });

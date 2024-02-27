@@ -35,14 +35,33 @@ module.exports = defineConfig({
   },
   /* Configure projects for major browsers */
   projects: [
+    { name: 'setup', testMatch: /.*\.setup\.js/ },
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome']},
+      name: 'Google Chrome',
+      use: { ...devices['Desktop Chrome'],
+      storageState: 'playwright/.auth/gmail-auth.json',
+      channel: 'chrome' },
+      dependencies: ['setup'],
     },
+    // {
+    //   name: 'gmail',
+    //   use: {
+    //     storageState: 'playwright/.auth/gmail-auth.json',
+    //   },
+    //   dependencies: ['setup'],
+    // },
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome']},
+    // },
 
     {
       name: 'iPad_View_Safari',
-      use: { ...devices['iPad Pro']},
+      use: 
+      { ...devices['iPad Pro'],
+      storageState: 'playwright/.auth/gmail-auth.json',
+      },
+      dependencies: ['setup'],
     },
 
     // {
@@ -56,10 +75,14 @@ module.exports = defineConfig({
     // },
 
     /* Test against mobile viewports. */
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5']},
-    },
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: 
+    //   { ...devices['Pixel 5'],
+    //   storageState: 'playwright/.auth/gmail-auth.json',
+    //   },
+    //   dependencies: ['setup'],
+    // },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
@@ -69,10 +92,6 @@ module.exports = defineConfig({
     // {
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
 
@@ -85,25 +104,5 @@ module.exports = defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
-// function determineSnapshotPath() {
-//   const browserName = process.env.PLAYWRIGHT_BROWSER;
-//   const platform = process.env.PLAYWRIGHT_PLATFORM;
-
-//   if (browserName && platform) {
-//     return `./t/snapshots/${browserName}-${platform}.png`;
-//   }
-
-//   return './t/snapshots/';
-// }
-
-// function getSnapshotPath() {
-//   if (process.env.GITHUB_ACTIONS && process.env.GITHUB_WORKSPACE) {
-//     return path.join(process.env.GITHUB_WORKSPACE, 'test-results', 'snapshots');
-//   } else {
-//     return path.join(__dirname, 't', 'snapshots');
-//   }
-// }
-
 
 
