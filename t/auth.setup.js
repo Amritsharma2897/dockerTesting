@@ -18,7 +18,7 @@ test('authenticate', async ({ page }) => {
 //   expect(currentURL).toContain("inbox");
 
   // Wait for login to complete
-  await page.waitForNavigation("domcontentloaded");
+//   await page.waitForNavigation("domcontentloaded");
 
   // Save authentication state
   await page.context().storageState({ path: 'playwright/.auth/gmail-auth.json' });
