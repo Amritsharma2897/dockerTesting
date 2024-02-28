@@ -14,14 +14,17 @@ test('authenticate', async ({ page }) => {
   await page.waitForSelector('input[type="password"]');
   await page.fill('input[type="password"]', 'Test&1234');
   await page.getByRole('button', { name: 'Next' }).click();
-//   const currentURL = await page.url();
-//   expect(currentURL).toContain("inbox");
+ //   const currentURL = await page.url();
+ //   expect(currentURL).toContain("inbox");
+ await page.waitForURL("https://mail.google.com/mail/u/0/#inbox");
 
-  // Wait for login to complete
-//   await page.waitForNavigation("domcontentloaded");
+ //   Wait for login to complete
+ await page.waitForLoadState('domcontentloaded');
+ // await page.waitForNavigation("domcontentloaded");
 
   // Save authentication state
   await page.context().storageState({ path: 'playwright/.auth/gmail-auth.json' });
+  await page.waitForTimeout(2000);
 
 
 
