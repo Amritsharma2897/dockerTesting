@@ -1,0 +1,15 @@
+{
+  "cookies": [
+    {
+      "name": "NID",
+      "value": "512=rs2LCLoSxxugyhOmvc76c23uGss_TRWxSQlnP28cWb8Ki5wChkbuAx93mfYr0WcBLYWVJ7c1O5NxzBwsPqGXAroVUXMl0-am7jOHFvl_bLga4uZlj0LOS3MgfDXamc0mcXt5fYDIrfFL5z0zCcKe31pfRypN6ERRBCjmsrTd9Pn76hi5Wy8",
+      "domain": ".google.com",
+      "path": "/",
+      "expires": 1724930118,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
