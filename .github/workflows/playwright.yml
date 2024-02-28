@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Load local storage
-      run: node load-local-storage.js
+      run: node auth.setup.js
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4
