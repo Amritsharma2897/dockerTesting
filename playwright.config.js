@@ -44,7 +44,7 @@ module.exports = defineConfig({
     {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'],
-      storageState: 'playwright/.auth/user.json',
+      storageState: 'playwright/.auth/gmail-auth.json',
       channel: 'chrome' },
       dependencies: ['setup'],
     },
@@ -64,7 +64,7 @@ module.exports = defineConfig({
       name: 'iPad_View_Safari',
       use: 
       { ...devices['iPad Pro'],
-      storageState: 'playwright/.auth/user.json',
+      storageState: 'playwright/.auth/gmail-auth.json',
       },
       dependencies: ['setup'],
     },

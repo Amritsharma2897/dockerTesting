@@ -17,8 +17,10 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Load local storage
+      run: node load-local-storage.js
     - name: Run Playwright tests
-      run: npx playwright test --update-snapshots
+      run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: always()
       with:
