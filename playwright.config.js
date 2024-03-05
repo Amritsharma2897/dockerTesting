@@ -60,14 +60,14 @@ module.exports = defineConfig({
     //   use: { ...devices['Desktop Chrome']},
     // },
 
-    {
-      name: 'iPad_View_Safari',
-      use: 
-      { ...devices['iPad Pro'],
-      storageState: 'playwright/.auth/gmail-auth.json',
-      },
-      dependencies: ['setup'],
-    },
+    // {
+    //   name: 'iPad_View_Safari',
+    //   use: 
+    //   { ...devices['iPad Pro'],
+    //   storageState: 'playwright/.auth/gmail-auth.json',
+    //   },
+    //   dependencies: ['setup'],
+    // },
 
     // {
     //   name: 'firefox',

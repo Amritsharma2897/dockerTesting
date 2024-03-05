@@ -6,13 +6,27 @@ test('authenticate', async ({ page }) => {
 
   // Fill in the email address and proceed
   await page.waitForSelector('input[type="email"]');
-  await page.fill('input[type="email"]', 'testng46@gmail.com');
+  await page.fill('input[type="email"]', 'tengineer@gmail.com');
+  await page.getByRole('button', { name: 'Next' }).click();
+
+  // await expect(page.getByRole('link', { name: 'Sign in' })).toBeVisible();
+  // await page.getByRole('link', { name: 'Sign in' }).click();
+  // await page.waitForSelector('input[type="email"]');
+  // await page.fill('input[type="email"]', 'tengineer@gmail.com');
+  // await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByLabel('Try again').click();
+  // await page.getByRole('link', { name: 'Sign in' }).click();
+  await page.getByLabel('Email or phone').click();
+  await page.getByLabel('Email or phone').fill('tengineer456@gmail.com');
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByLabel('Enter your password').click();
+  await page.getByLabel('Enter your password').fill('Test&12345');
   await page.getByRole('button', { name: 'Next' }).click();
 
   // Wait for the password input field and fill in the password
-  await page.waitForSelector('input[type="password"]');
-  await page.fill('input[type="password"]', 'Test&1234');
-  await page.getByRole('button', { name: 'Next' }).click();
+  // await page.waitForSelector('input[type="password"]');
+  // await page.fill('input[type="password"]', 'Test&12345');
+  // await page.getByRole('button', { name: 'Next' }).click();
  //   const currentURL = await page.url();
  //   expect(currentURL).toContain("inbox");
  await page.waitForURL("https://mail.google.com/mail/u/0/#inbox");
