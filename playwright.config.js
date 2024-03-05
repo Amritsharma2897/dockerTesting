@@ -40,13 +40,13 @@ module.exports = defineConfig({
   },
   /* Configure projects for major browsers */
   projects: [
-    { name: 'setup', testMatch: /.*\.setup\.js/ },
+    // { name: 'setup', testMatch: /.*\.setup\.js/ },
     {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'],
-      storageState: 'playwright/.auth/gmail-auth.json',
+      // storageState: 'playwright/.auth/gmail-auth.json',
       channel: 'chrome' },
-      dependencies: ['setup'],
+      // dependencies: ['setup'],
     },
     // {
     //   name: 'gmail',
