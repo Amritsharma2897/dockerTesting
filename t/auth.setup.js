@@ -11,7 +11,7 @@ test('authenticate', async ({ page }) => {
   // await expect(page.getByLabel('Try again')).toBeVisible();
   await page.waitForTimeout(2000);
   // await expect(page.locator('[aria-label="Try again"]')).toBeVisible();
-  await page.locator('[aria-label="Try again"]').click({force: true});
+  await page.getByLabel('Try again').click({force: true});
 
   // await page.getByLabel('Try again').click();
   // await page.getByRole('link', { name: 'Sign in' }).click();
