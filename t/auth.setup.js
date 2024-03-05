@@ -8,8 +8,12 @@ test('authenticate', async ({ page }) => {
   await page.waitForSelector('input[type="email"]');
   await page.fill('input[type="email"]', 'tengineer@gmail.com');
   await page.getByRole('button', { name: 'Next' }).click();
-  await expect(page.getByLabel('Try again')).toBeVisible();
-  await page.getByLabel('Try again').click();
+  // await expect(page.getByLabel('Try again')).toBeVisible();
+  await page.waitForTimeout(2000);
+  await expect(page.locator('[aria-label="Try again"]')).toBeVisible();
+  await page.locator('[aria-label="Try again"]').click();
+
+  // await page.getByLabel('Try again').click();
   // await page.getByRole('link', { name: 'Sign in' }).click();
   await page.getByLabel('Email or phone').click();
   await page.getByLabel('Email or phone').fill('tengineer456@gmail.com');
