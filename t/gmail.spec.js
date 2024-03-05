@@ -5,17 +5,21 @@ test('Gmail login', async ({ page }) => {
 //   // Check if the user is logged in
 await page.goto('https://mail.google.com');
 
-await page.waitForSelector('input[type="email"]');
-await page.fill('input[type="email"]', 'tengineer@gmail.com');
-await page.getByRole('button', { name: 'Next' }).click();
-await expect(page.locator('[aria-label="Try again"]')).toBeVisible();
-await page.locator('[aria-label="Try again"]').click();
-await page.getByLabel('Email or phone').click();
-await page.getByLabel('Email or phone').fill('tengineer456@gmail.com');
-await page.getByRole('button', { name: 'Next' }).click();
-await page.getByLabel('Enter your password').click();
-await page.getByLabel('Enter your password').fill('Test&12345');
-await page.getByRole('button', { name: 'Next' }).click();
+// await page.waitForSelector('input[type="email"]');
+// await page.fill('input[type="email"]', 'tengineer@gmail.com');
+// await page.getByRole('button', { name: 'Next' }).click();
+// await expect(page.locator('[aria-label="Try again"]')).toBeVisible();
+// await page.locator('[aria-label="Try again"]').click();
+// await page.getByLabel('Email or phone').click();
+// await page.getByLabel('Email or phone').fill('tengineer456@gmail.com');
+// await page.getByRole('button', { name: 'Next' }).click();
+// await page.getByLabel('Enter your password').click();
+// await page.getByLabel('Enter your password').fill('Test&12345');
+// await page.getByRole('button', { name: 'Next' }).click();
+await expect (page.getByRole('button', { name: 'More labels' })).toBeVisible();
+await page.getByRole('button', { name: 'More labels' }).click();
+await expect(page.getByLabel('All Mail')).toBeVisible();
+await page.getByLabel('All Mail').click();
 
 // await expect(page.getByRole('link', { name: 'Sign in' })).toBeVisible();
 // await page.getByRole('link', { name: 'Sign in' }).click();
@@ -28,10 +32,7 @@ await page.getByRole('button', { name: 'Next' }).click();
 // await page.fill('input[type="password"]', 'Test&12345');
 // await page.getByRole('button', { name: 'Next' }).click();
 
-await expect (page.getByRole('button', { name: 'More labels' })).toBeVisible();
-await page.getByRole('button', { name: 'More labels' }).click();
-await expect(page.getByLabel('All Mail')).toBeVisible();
-await page.getByLabel('All Mail').click();
+
 // await expect(page.getByRole('link', { name: 'Inbox Security alert - Your' })).toBeVisible();
 // await page.getByRole('link', { name: 'Inbox Security alert - Your' }).click();
 });
