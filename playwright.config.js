@@ -36,7 +36,7 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    // baseURL: 'https://opensource-demo.orangehrmlive.com/',
+    baseURL: process.env.URL ? 'https://opensource-demo.orangehrmlive.com/' : 'https://opensource-demo.orangehrmlive.com/',
     screenshot: "on",
     headless: true,
     video: "on",
