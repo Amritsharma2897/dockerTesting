@@ -25,6 +25,7 @@
 
 //     // extract the confirmation code (so we can confirm the user)
 //     const code = /([0-9]{6})$/.exec(email.body)[1];
+//     console.log(code);
 
 //     // enter confirmation code
 //     await page.fill('[data-test="confirm-sign-up-confirmation-code-input"]', code);
