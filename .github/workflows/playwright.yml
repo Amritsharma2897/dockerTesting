@@ -51,9 +51,9 @@ jobs:
 
       - name: Load environment variables from Secrets
         run: |
-          echo "URL=${{ secrets.URL }}" >> $GITHUB_ENV
-          echo "USER_NAME=${{ secrets.USER_NAME }}" >> $GITHUB_ENV
-          echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
+          echo "URL=${{ secrets.URL }}" >> .env.local
+          echo "USER_NAME=${{ secrets.USER_NAME }}" >> .env.local
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env.local
 
       - name: Debug Environment Variables (optional)
         run: |
