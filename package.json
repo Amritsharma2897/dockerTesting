@@ -12,8 +12,5 @@
     "@types/node": "^20.11.16",
     "dotenv": "^16.4.5",
     "playwright": "^1.42.1"
-  },
-  "dependencies": {
-    "process": "^0.11.10"
   }
 }
