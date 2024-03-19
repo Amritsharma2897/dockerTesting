@@ -51,9 +51,9 @@ jobs:
 
       - name: Load environment variables from Secrets and source .env.local
         run: |
-          echo "URL=${{ process.env.URL }}" >> .env.local
-          echo "USER_NAME=${{ process.env.USER_NAME }}" >> .env.local
-          echo "PASSWORD=${{ process.env.PASSWORD }}" >> .env.local
+          echo "URL=${{ secrets.URL }}" >> .env.local
+          echo "USER_NAME=${{ secrets.USER_NAME }}" >> .env.local
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env.local
           source .env.local  # Source the .env.local file to make environment variables available
 
       - name: Debug Environment Variables (optional)
