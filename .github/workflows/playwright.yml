@@ -28,6 +28,7 @@
 
 
 name: Playwright Tests
+
 on:
   push:
     branches: [ main, master ]
@@ -39,44 +40,37 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: Load environment variables from secrets
-        if: ${{ secrets.URL && secrets.USER_NAME && secrets.PASSWORD }}
-        env:
-          URL: ${{ secrets.URL }}
-          USER_NAME: ${{ secrets.USER_NAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
-          echo "URL=${{ secrets.URL }}" >> .env.local
-          echo "USER_NAME=${{ secrets.USER_NAME }}" >> .env.local
-          echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env.local
-      - name: Log environment variables (optional)
-        run: |
-          echo "** Environment Variables **"
-          echo "  URL: ${{ env.URL }}"
-          echo "  USER_NAME: ${{ env.USER_NAME }}"
-      - name: Run Playwright tests
-        run: |
-          # Check if URL is defined before navigation
-          if [[ -z "${{ env.URL }}" ]]; then
-            echo "Error: URL environment variable is not defined!"
-            exit 1
-          fi
+    - uses: actions/checkout@v4
 
-          npx playwright test
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Load environment variables from Secrets
+      run: |
+        echo "URL=${{ secrets.URL }}" >> $GITHUB_ENV
+        echo "USER_NAME=${{ secrets.USER_NAME }}" >> $GITHUB_ENV
+        echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Playwright tests
+      run: npx playwright test
+
+    - name: Upload Playwright report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
+
+
 
 
 
