@@ -1,7 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 import dotenv from 'dotenv';
-dotenv.config({ path: './env/.env.local' });// Load variables from a specific file
+dotenv.config({ path: './env/.env' });// Load variables from a specific file
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv

@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 test('Login orrange hrm application', async ({ page }) => {
-    await page.goto(`${process.env.URL}web/index.php/auth/login`); // Template literal
+    await page.goto(process.env.URL+'web/index.php/auth/login'); // Template literal
 
     await expect(page.getByPlaceholder('Username')).toBeVisible();
     await page.getByPlaceholder('Username').click();
