@@ -49,21 +49,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Load environment variables from Secrets and source .env.local
-        run: |
-          echo "USER_NAME=${{ secrets.USER_NAME }}" >> .env
-          echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
-          source .env  # Source the .env.local file to make environment variables available
-
-      - name: Debug Environment Variables (optional)
-        run: |
-          echo "USER_NAME: $USER_NAME"
-          echo "PASSWORD: $PASSWORD"  # This will be masked for security reasons
-
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      # - name: Load environment variables from Secrets and source .env.local
+      #   run: |
+          # echo "USER_NAME=${{ secrets.USER_NAME }}"
+          # echo "PASSWORD=${{ secrets.PASSWORD }}"
+
+      # - name: Debug Environment Variables (optional)
+      #   run: |
+      #     echo "USER_NAME: $USER_NAME"
+      #     echo "PASSWORD: $PASSWORD"  # This will be masked for security reasons
+
       - name: Run Playwright tests
+        env: 
+          USER_NAME: ${{secrets.USER_NAME}}
+          PASSWORD: ${{secrets.PASSWORD}}
         run: npx playwright test
 
       - uses: actions/upload-artifact@v4
