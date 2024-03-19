@@ -49,14 +49,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Load environment variables from .env.local (optional)
-        if: "! secrets.URL && ! secrets.USER_NAME && ! secrets.PASSWORD"  # Only run if secrets are not defined
+      - name: Load environment variables from Secrets
         run: |
-          echo "URL=your_actual_url" >> .env.local
-          echo "USER_NAME=your_username" >> .env.local
-          echo "PASSWORD=your_password" >> .env.local
-        env:
-          # Inherited from .env.local
+          echo "URL=${{ secrets.URL }}" >> $GITHUB_ENV
+          echo "USER_NAME=${{ secrets.USER_NAME }}" >> $GITHUB_ENV
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
 
       - name: Debug Environment Variables (optional)
         run: |
