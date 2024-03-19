@@ -1,79 +1,77 @@
-name: Playwright Tests
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
-
-
 # name: Playwright Tests
-
 # on:
 #   push:
-#     branches: [main, master]
+#     branches: [ main, master ]
 #   pull_request:
-#     branches: [main, master]
-
+#     branches: [ main, master ]
 # jobs:
 #   test:
 #     timeout-minutes: 60
 #     runs-on: ubuntu-latest
 #     steps:
-#       - uses: actions/checkout@v4
+#     - uses: actions/checkout@v4
+#     - uses: actions/setup-node@v4
+#       with:
+#         node-version: 20
+#     - name: Install dependencies
+#       run: npm ci
+#     - name: Install Playwright Browsers
+#       run: npx playwright install --with-deps
+#     - name: Run Playwright tests
+#       run: npx playwright test
+#     - uses: actions/upload-artifact@v4
+#       if: always()
+#       with:
+#         name: playwright-report
+#         path: playwright-report/
+#         retention-days: 30
 
-#       - uses: actions/setup-node@v4
-#         with:
-#           node-version: 20
 
-#       - name: Install dependencies
-#         run: npm ci
+name: Playwright Tests
 
-#       - name: Load environment variables from Secrets and source .env.local
-#         run: |
-#           echo "URL=${{ secrets.URL }}" >> .env.local
-#           echo "USER_NAME=${{ secrets.USER_NAME }}" >> .env.local
-#           echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env.local
-#           source .env.local  # Source the .env.local file to make environment variables available
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
 
-#       - name: Debug Environment Variables (optional)
-#         run: |
-#           echo "URL: $URL"
-#           echo "USER_NAME: $USER_NAME"
-#           echo "PASSWORD: $PASSWORD"  # This will be masked for security reasons
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-#       - name: Install Playwright Browsers
-#         run: npx playwright install --with-deps
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-#       - name: Run Playwright tests
-#         run: npx playwright test
+      - name: Install dependencies
+        run: npm ci
 
-#       - uses: actions/upload-artifact@v4
-#         if: always()
-#         with:
-#           name: playwright-report
-#           path: playwright-report/
-#           retention-days: 30
+      - name: Load environment variables from Secrets and source .env.local
+        run: |
+          echo "USER_NAME=${{ secrets.USER_NAME }}" >> .env
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
+          source .env  # Source the .env.local file to make environment variables available
+
+      - name: Debug Environment Variables (optional)
+        run: |
+          echo "USER_NAME: $USER_NAME"
+          echo "PASSWORD: $PASSWORD"  # This will be masked for security reasons
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
 
 
