@@ -14,7 +14,6 @@
     "playwright": "^1.42.1"
   },
   "dependencies": {
-    "gmail-getter": "^2.0.0",
     "path": "^0.12.7",
     "playwright": "^1.41.2",
     "process": "^0.11.10"
