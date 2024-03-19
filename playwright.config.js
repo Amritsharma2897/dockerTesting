@@ -1,6 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
-const path = require('path');
+import dotenv from 'dotenv';
+dotenv.config({ path: './env/.env' }); // Load variables from a specific file
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -25,7 +26,7 @@ module.exports = defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 0: 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : 1,
+  workers: process.env.CI ? 3 : 3,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html'],['list']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -34,6 +35,7 @@ module.exports = defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    baseURL: 'https://opensource-demo.orangehrmlive.com/',
     trace: 'on-first-retry',
     screenshot: "on",
     headless: true,
@@ -41,13 +43,13 @@ module.exports = defineConfig({
   },
   /* Configure projects for major browsers */
   projects: [
-    { name: 'setup', testMatch: /.*\.setup\.js/ },
+    // { name: 'setup', testMatch: /.*\.setup\.js/ },
     {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'],
-      storageState: 'playwright/.auth/gmail-auth.json',
+      // storageState: 'playwright/.auth/gmail-auth.json',
       channel: 'chrome' },
-      dependencies: ['setup'],
+      // dependencies: ['setup'],
     },
     // {
     //   name: 'gmail',
@@ -61,14 +63,14 @@ module.exports = defineConfig({
     //   use: { ...devices['Desktop Chrome']},
     // },
 
-    // {
-    //   name: 'iPad_View_Safari',
-    //   use: 
-    //   { ...devices['iPad Pro'],
-    //   storageState: 'playwright/.auth/gmail-auth.json',
-    //   },
-    //   dependencies: ['setup'],
-    // },
+    {
+      name: 'iPad_View_Safari',
+      use: 
+      { ...devices['iPad Pro'],
+      // storageState: 'playwright/.auth/gmail-auth.json',
+      },
+      // dependencies: ['setup'],
+    },
 
     // {
     //   name: 'firefox',
@@ -81,14 +83,14 @@ module.exports = defineConfig({
     // },
 
     /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: 
-    //   { ...devices['Pixel 5'],
-    //   storageState: 'playwright/.auth/gmail-auth.json',
-    //   },
-    //   dependencies: ['setup'],
-    // },
+    {
+      name: 'Mobile Chrome',
+      use: 
+      { ...devices['Pixel 5'],
+      // storageState: 'playwright/.auth/gmail-auth.json',
+      },
+      // dependencies: ['setup'],
+    },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
