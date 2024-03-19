@@ -31,9 +31,9 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   test:
@@ -49,11 +49,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Load environment variables from Secrets
+      - name: Load environment variables from Secrets and source .env.local
         run: |
           echo "URL=${{ secrets.URL }}" >> .env.local
           echo "USER_NAME=${{ secrets.USER_NAME }}" >> .env.local
           echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env.local
+          source .env.local  # Source the .env.local file to make environment variables available
 
       - name: Debug Environment Variables (optional)
         run: |
@@ -73,6 +74,7 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
 
 
 
