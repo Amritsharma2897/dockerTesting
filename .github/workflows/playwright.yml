@@ -49,17 +49,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Load environment variables from Secrets
+      - name: Load environment variables from .env.local (optional)
+        if: "! secrets.URL && ! secrets.USER_NAME && ! secrets.PASSWORD"  # Only run if secrets are not defined
         run: |
-          echo "URL=${{ secrets.URL }}" >> $GITHUB_ENV
-          echo "USER_NAME=${{ secrets.USER_NAME }}" >> $GITHUB_ENV
-          echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
+          echo "URL=your_actual_url" >> .env.local
+          echo "USER_NAME=your_username" >> .env.local
+          echo "PASSWORD=your_password" >> .env.local
+        env:
+          # Inherited from .env.local
 
-      - name: Debug Environment Variables
+      - name: Debug Environment Variables (optional)
         run: |
           echo "URL: $URL"
           echo "USER_NAME: $USER_NAME"
-          echo "PASSWORD: $PASSWORD"
+          echo "PASSWORD: $PASSWORD"  # This will be masked for security reasons
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
@@ -73,6 +76,7 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
 
 
 
